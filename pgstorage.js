@@ -26,6 +26,7 @@ function timeoutWrap(func) {
   return when.promise(function (resolve, reject, notify) {
     var promise = func().timeout(5000, 'timeout')
     promise.then(function (a, b, c, d) {
+      //heartBeatLastSent = (new Date()).getTime();
       resolve(a, b, c, d)
     })
     promise.otherwise(function (err) {
@@ -132,6 +133,7 @@ function getLibraryEntry(type, path) {
       if (data && data.body) {
         resolve(data.body)
       } else {
+        // ディレクトリを指定された場合はそのパスに存在するデータの一覧を返す
         if (path != '' && path.substr(-1) != '/') {
           path = path + '/'
         }
@@ -183,6 +185,7 @@ var pgstorage = {
     return when.promise(async (resolve, reject, notify) => {
       try {
         const _pool = pgutil.initPG()
+        // _poolを返却することで正しい？
         resolve(_pool)
       } catch (err) {
         reject(err)
@@ -229,6 +232,7 @@ var pgstorage = {
     })
   },
   mapNodeTypes: function (flows, credentials) {
+    // extract credential type from flows
     for (let props in credentials) {
       for (let i = 0; i < flows.length; i++) {
         const item = flows[i]
