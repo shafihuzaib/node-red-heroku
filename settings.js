@@ -44,7 +44,7 @@ var settings = module.exports = {
 
     functionGlobalContext: { },
 
-    storageModule: require("./pgstorage"),
+    storageModule: require("./mongostorage"),
 
     httpNodeCors: {
         origin: "*",
@@ -76,4 +76,5 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
     }
 }
 
-settings.pgAppname = 'nodered';
+settings.mongoAppname = 'nodered';
+settings.mongoUrl = process.env.MONGODB_URI;

@@ -16,12 +16,5 @@
       "value": ""
     }
   },
-  "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev",
-      "options": {
-        "version": "12"
-      }
-    }
-  ]
+  "addons": [ "mongolab" ]
 }
